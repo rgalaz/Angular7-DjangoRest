@@ -1,0 +1,102 @@
+<br>
+<!--
+<table class="table">
+    <thead>
+        <tr class="thead-dark">
+            <th>id</th>
+            <th>Name</th>
+            <th>description</th>
+            <th>Cost</th>
+            <th>Units</th>
+            <th>Delete</th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of products">
+            <td>{{product.id}}</td>
+            <td>{{product.title}}</td>
+            <td>{{product.description}}</td>
+            <td>{{product.unitCost}}</td>
+            <td>{{product.unit}}</td>
+            <td><button class="btn btn-danger" (click)="deleteProduct(product.id)">
+                <i class="fas fa-trash-alt"></i>
+            </button></td>
+            <td>
+                <a [routerLink]="['/product/edit', product.id]" class="btn btn-success">
+                    <i class="far fa-edit"></i>
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>     
+
+<br>
+-->
+<div class="center">
+<mat-form-field >
+  <input (keyup)="applyFilter($event.target.value)" matInput placeholder="Filter">
+</mat-form-field>
+</div>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> id </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+      </ng-container>
+
+
+    <ng-container matColumnDef="Description">
+      <th mat-header-cell *matHeaderCellDef> Description </th>
+      <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="Cost">
+      <th mat-header-cell *matHeaderCellDef> Cost </th>
+      <td mat-cell *matCellDef="let element"> {{element.unitCost}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="Unit">
+      <th mat-header-cell *matHeaderCellDef> Unit </th>
+      <td mat-cell *matCellDef="let element"> {{element.unit}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Created">
+        <th mat-header-cell *matHeaderCellDef> Created </th>
+        <td mat-cell *matCellDef="let element"> {{element.created_at}} </td>
+      </ng-container>
+
+    <ng-container matColumnDef="Modified">
+      <th mat-header-cell *matHeaderCellDef> Modified </th>
+      <td mat-cell *matCellDef="let element"> {{element.updated_at}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Edit">
+      <th mat-header-cell *matHeaderCellDef> Edit </th>
+      <td mat-cell *matCellDef="let element"> 
+          <a [routerLink]="['/product/edit',element.id]" class="btn btn-success">
+            <i class="far fa-edit"></i>
+        </a>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Delete">
+      <th mat-header-cell *matHeaderCellDef> Delete </th>
+      <td mat-cell *matCellDef="let element">
+        <button class="btn btn-danger" (click)="deleteProduct(element.id)">
+        <i class="fas fa-trash-alt"></i>
+    </button> </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
