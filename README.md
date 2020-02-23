@@ -1,4 +1,4 @@
-# Angular7-DjangoRest
+# CRUD Angular7-DjangoRest
 Angular 7 + Angular Material + API REST Django
 
 1. Clone the repository
